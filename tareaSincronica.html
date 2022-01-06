@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea en clases</title>
+</head>
+<body>
+    <h1>fjsdklfsdklfdsklfjlkdfjlksjflksd</h1>  
+    
+    
+    <p id="demo"></p>
+    <p id="demo2"></p>
+    
+    <script type="text/javascript">
+        function calcular() {
+            alert("entro la funcion calcular")
+            let v1 = parseInt(document.getElementById("v1").value);
+            let v2 = parseInt(document.getElementById("v2").value);
+            let suma = v1+v2;
+            document.getElementById("res").value=suma;
+            
+        }   
+           function sincronica() {
+                var req=new XMLHttpRequest();
+                req.open('GET','tareaSincronicaRest.html',false);
+                req.send(null);
+                if (req.status==200) {
+                    document.getElementById("demo").innerHTML=req.responseText
+                }
+            }    
+           function asincronica() {
+                var req=new XMLHttpRequest();
+                req.open('GET','tareaSincronicaRest.html',true);
+                req.onreadystatechange=function(aEvt){
+                if (req.readyState==4) {    
+                    if (req.status==200) {
+                            document.getElementById("demo2").innerHTML=req.responseText
+                        }else{
+                            document.getElementById("demo2").innerHTML="error carga pagina"
+                    }
+                    
+                }      
+               
+            }
+            req.send(null)
+        }
+        
+        //sincronica();//se puede cambiar por sync o async
+        asincronica();
+        
+
+    </script>
+</body>
+</html>
